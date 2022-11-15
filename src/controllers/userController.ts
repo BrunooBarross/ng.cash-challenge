@@ -9,5 +9,5 @@ export async function userSignUp(req: Request, res: Response) {
 export async function userLogin(req: Request, res: Response){
     const data = req.body;
     const userData = await userService.signin(data);
-    res.status(200).send(userData)
+    return res.status(200).send(userData);
 }

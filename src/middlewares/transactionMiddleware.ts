@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { transactionSchema } from "../schemas/transactionSchmea";
+import { transactionSchema } from "../schemas/transactionSchmea.js";
 
 export function validateDataTransaction(req: Request, res: Response, next: NextFunction){
     const { error } = transactionSchema.validate(req.body);
