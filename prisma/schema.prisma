@@ -33,7 +33,8 @@ model Accounts {
 model Transactions {
   id                Int       @id @default(autoincrement())
   debitedAccountId  Int       
-  creditedAccountId Int       
+  creditedAccountId Int 
+  value             Float      
   createdAt         DateTime  @default(now())
   account1          Accounts  @relation("account", fields: [debitedAccountId ], references:[id])
   account2          Accounts  @relation("account2", fields: [creditedAccountId], references:[id])
