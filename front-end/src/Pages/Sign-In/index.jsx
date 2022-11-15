@@ -39,12 +39,8 @@ const SignIn = () => {
         } catch (error) {
             setAlertColor(false);
             setImageSrc("../assets/images/error.png")
-            if (error.response.status === 404) {
-                setAlert('Email não cadastrado');
-                setIsOpen(true);
-            }
             if (error.response.status === 401) {
-                setAlert('Senha incorreta');
+                setAlert('Usuário ou senha incorretos');
                 setIsOpen(true);
             }
             setTimeout(() => {
