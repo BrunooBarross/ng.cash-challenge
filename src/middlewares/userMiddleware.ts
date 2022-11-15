@@ -21,3 +21,13 @@ export async function checkUserConflict(req: Request, res: Response, next: NextF
     
     next();
 }
+
+export function validateDataSignIn(req: Request, res: Response, next: NextFunction){
+    const { error } = userSchemaSignIn.validate(req.body);
+
+    if (error) {
+        throw { type: "unauthorized", message: error.details[0].message }
+    }
+
+    next();
+}
