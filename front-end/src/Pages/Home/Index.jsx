@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getListTransactions } from '../../Services/transactions';
+import { getCurrentMonth, filterListByMonth } from "../../Helpers/dateFilter"
 
 import Header from "../../Components/Header";
 import InfoArea from "../../Components/InfoArea";
@@ -13,6 +14,8 @@ import {
 const Home = () => {
     const { token } = JSON.parse(localStorage.getItem('userData'));
     const [listTransactions, setListTransactions] = useState(null);
+    const [filteredList, setFilteredList] = useState([]);
+    const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
 
     useEffect(() => {
         const loadTransactions = async () =>{
@@ -23,14 +26,30 @@ const Home = () => {
         };
         loadTransactions();
     }, [token]);
-    
+
+    useEffect(()=>{ 
+        if(listTransactions !== null){
+            setFilteredList(filterListByMonth(listTransactions.transactions, currentMonth));
+        };   
+    },[listTransactions, currentMonth])
+  
+    function handleMonthChange(newMonth){
+        setCurrentMonth(newMonth);
+    }
+
     return(
         <Container>
             <Header/>
             <Body>
-                <InfoArea/>
+                <InfoArea
+                    currentMonth={currentMonth}
+                    onMonthChange={handleMonthChange}
+                />
                 {listTransactions !== null ? 
-                    <TableArea listTransactions={listTransactions}/> : 
+                    <TableArea 
+                        listTransactions={filteredList} 
+                        account={listTransactions.account}
+                    /> : 
                     <TableArea listTransactions={[]}/>
                 }
             </Body>

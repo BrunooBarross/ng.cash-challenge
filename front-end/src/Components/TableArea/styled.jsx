@@ -24,7 +24,7 @@ const Td = styled.td`
 
 const Value = styled.td`
     font-weight: bold;
-    color: ${props => props.color ? "green": "red"};
+    color: ${props => props.color === "true" ? "green": "red"};
 `
 
 const CashInfo = styled.div`
@@ -35,7 +35,7 @@ const CashInfo = styled.div`
     height: 25px;
     border-radius: 5px;
     color: #fff;
-    background-color: ${props => props.color ? "blue": "red"};
+    background-color: ${props => props.color === "false" ? "red": "blue"};
 `
 export {
     Table,
