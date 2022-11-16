@@ -24,8 +24,8 @@ model Accounts {
   id              Int            @id @default(autoincrement())
   balance         Float
   users           Users?  
-  transactions    Transactions[] @relation("account")
-  transactions2   Transactions[] @relation("account2")
+  transactionsDebit    Transactions[] @relation("debited")
+  transactionsCredit   Transactions[] @relation("credited")
 
   @@map("accounts")    
 }
@@ -36,8 +36,8 @@ model Transactions {
   creditedAccountId Int 
   value             Float      
   createdAt         DateTime  @default(now())
-  account1          Accounts  @relation("account", fields: [debitedAccountId ], references:[id])
-  account2          Accounts  @relation("account2", fields: [creditedAccountId], references:[id])
+  debited           Accounts  @relation("debited", fields: [debitedAccountId ], references:[id])
+  credited          Accounts  @relation("credited", fields: [creditedAccountId], references:[id])
 
   @@map("transactions")
 }
