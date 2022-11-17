@@ -9,6 +9,10 @@ const Table = styled.table`
     background-color: #fff;
     box-shadow: 0px 0px 5px #CCC;
     border-radius: 10px;
+
+    @media (max-width: 556px) {
+        font-size: 13px;
+    }
 `
 
 const TableHeadColumn = styled.th`
@@ -36,6 +40,11 @@ const CashInfo = styled.div`
     border-radius: 5px;
     color: #fff;
     background-color: ${props => props.color === "false" ? "red": "blue"};
+
+    @media (max-width: 556px) {
+        width: 70px;
+    }
+
 `
 export {
     Table,

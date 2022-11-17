@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 const Container = styled.div`
     flex: 1;
+    @media (max-width: 556px) {
+        font-size: 13px;
+    }
 `;
 
 const Title = styled.div`

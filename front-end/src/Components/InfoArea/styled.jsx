@@ -16,6 +16,10 @@ const MonthArea = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
+
+    @media (max-width: 556px) {
+        font-size: 13px;
+    }
 `;
 
 const MonthArrow = styled.div`
@@ -23,6 +27,10 @@ const MonthArrow = styled.div`
     width: 30px;
     text-align: center;
     font-size: 25px;
+
+    @media (max-width: 556px) {
+        font-size: 20px;
+    }
 `;
 
 const MonthTitle = styled.div`
