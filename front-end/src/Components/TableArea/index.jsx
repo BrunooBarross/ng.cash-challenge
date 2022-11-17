@@ -8,8 +8,8 @@ import {
     Value
 } from "./styled";
 
-const TableArea = ({listTransactions, account}) => {
-    return(
+const TableArea = ({ listTransactions, account }) => {
+    return (
         <Table>
             <thead>
                 <tr>
@@ -21,22 +21,22 @@ const TableArea = ({listTransactions, account}) => {
             </thead>
             {listTransactions ?
                 <tbody>
-                    {listTransactions.map((item, index)=>(
-                    <tr key={index}>
-                        <Td>{dayjs(item.createdAt).format("DD-MM-YY")}</Td>
-                        {item.debitedAccountId === account.id ?  
-                            <Td><CashInfo color={"false"}>cash-out</CashInfo></Td> :  
-                            <Td><CashInfo color={"true"}>cash-in</CashInfo></Td>
-                        }
-                        {item.debitedAccountId === account.id ? 
-                            <Td>Você transferiu para {item.credited.users.userName}</Td> :
-                            <Td>Tansferência Recebida de {item.debited.users.userName}</Td>
-                        }
-                        <Value color={item.debitedAccountId === account.id ? "false" : "true"}>
-                            {item.debitedAccountId === account.id ?  "- " : ""}
-                            {item.value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}
-                        </Value>
-                    </tr>
+                    {listTransactions.map((item, index) => (
+                        <tr key={index}>
+                            <Td>{dayjs(item.createdAt).format("DD-MM-YY")}</Td>
+                            {item.debitedAccountId === account.id ?
+                                <Td><CashInfo color={"false"}>cash-out</CashInfo></Td> :
+                                <Td><CashInfo color={"true"}>cash-in</CashInfo></Td>
+                            }
+                            {item.debitedAccountId === account.id ?
+                                <Td>Você transferiu para {item.credited.users.userName}</Td> :
+                                <Td>Tansferência Recebida de {item.debited.users.userName}</Td>
+                            }
+                            <Value color={item.debitedAccountId === account.id ? "false" : "true"}>
+                                {item.debitedAccountId === account.id ? "- " : ""}
+                                {item.value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+                            </Value>
+                        </tr>
                     ))}
                 </tbody> : <></>
             }
