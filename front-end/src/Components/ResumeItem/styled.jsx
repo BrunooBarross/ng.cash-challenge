@@ -14,7 +14,7 @@ const Title = styled.div`
 const Info = styled.div`
     text-align: center;
     font-weight: bold;
-    color: #000;
+    color: ${props => props.color ?? '#000'};
 `;
 
 export {
