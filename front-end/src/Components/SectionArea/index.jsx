@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import TransactionModal from '../TransactionModal';
 import {
     Container,
     DivSelect,
@@ -5,10 +7,19 @@ import {
     ButtonTransaction
 } from "./styled"
 
-const SectionArea = ({ setFilteredCashInOut }) => {
+const SectionArea = ({ setFilteredCashInOut, token, balance, loadPage, setLoadPage }) => {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     return (
         <Container>
+            <TransactionModal 
+                token={token}
+                modalIsOpen={modalIsOpen}
+                setModalIsOpen={setModalIsOpen}
+                balance={balance}
+                loadPage={loadPage}
+                setLoadPage={setLoadPage}
+            />
             <DivSelect>
                 <b>Filtro:</b>
                 <Select onChange={e => setFilteredCashInOut(e.target.value)}>
@@ -18,7 +29,7 @@ const SectionArea = ({ setFilteredCashInOut }) => {
                 </Select>
             </DivSelect>
             <ButtonTransaction>
-                <span>Transferir</span>
+                <span onClick={() => setModalIsOpen(!modalIsOpen)}>Transferir</span>
             </ButtonTransaction>
         </Container>
     )

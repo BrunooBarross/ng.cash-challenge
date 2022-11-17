@@ -36,7 +36,7 @@ export async function getBalance(id: number) {
             },
         },
     })
-    return { account, transactions: transactions.transactionsDebit.concat(transactions.transactionsCredit).reverse()}
+    return { account, transactions: transactions.transactionsDebit.concat(transactions.transactionsCredit)}
 };
 
 async function userSender(id: number){

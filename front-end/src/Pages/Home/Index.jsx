@@ -20,6 +20,7 @@ const Home = () => {
     const [totalCashIn, setTotalCashIn] = useState(0);
     const [totalCashOut, setTotalCashOut] = useState(0);
     const [filteredCashInOut, setFilteredCashInOut] = useState(1); // 1 Todos - 2 Cash-in - 3 Cash-out
+    const [loadPage, setLoadPage] = useState(false);
     
     useEffect(() => {
         const loadTransactions = async () => {
@@ -29,7 +30,7 @@ const Home = () => {
             } catch (e) { }
         };
         loadTransactions();
-    }, [token]);
+    }, [token, loadPage]);
 
     useEffect(() => {
         if (listTransactions !== null) {
@@ -75,7 +76,11 @@ const Home = () => {
                     totalCashOut={totalCashOut}
                 />
                 <SectionArea 
+                    token={token}
                     setFilteredCashInOut={setFilteredCashInOut}
+                    balance={listTransactions !== null ? listTransactions.account.balance : 0}
+                    loadPage={loadPage}
+                    setLoadPage={setLoadPage}
                 />
                 {listTransactions !== null ?
                     <TableArea
