@@ -5,16 +5,29 @@ export const getCurrentMonth = () => {
     return `${now.getFullYear()}-${now.getMonth() + 1}`;
 };
 
-export const filterListByMonth = (list, date) => {
+export const filterListByMonth = (list, date, filteredCashInOut, userId) => {
     let newList = [];
     let [year, month] = date.split('-');
-
+    
     for (let i in list) {
         if (
             dayjs(list[i].createdAt).format("YYYY") === year &&
             dayjs(list[i].createdAt).format("MM") === month
         ) {
-            newList.push(list[i]);
+            if(parseInt(filteredCashInOut) === 1){ 
+                newList.push(list[i]);
+            };
+            if(parseInt(filteredCashInOut) === 2){
+                if(list[i].creditedAccountId === userId){
+                    newList.push(list[i]);
+                };
+            };
+
+            if(parseInt(filteredCashInOut) === 3){
+                if(list[i].debitedAccountId === userId){
+                    newList.push(list[i]);
+                };
+            };
         };
     };
 

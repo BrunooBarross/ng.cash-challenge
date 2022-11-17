@@ -5,6 +5,7 @@ import { getCurrentMonth, filterListByMonth } from "../../Helpers/dateFilter"
 import Header from "../../Components/Header";
 import InfoArea from "../../Components/InfoArea";
 import TableArea from "../../Components/TableArea";
+import SectionArea from '../../Components/SectionArea';
 
 import {
     Container,
@@ -18,7 +19,8 @@ const Home = () => {
     const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
     const [totalCashIn, setTotalCashIn] = useState(0);
     const [totalCashOut, setTotalCashOut] = useState(0);
-
+    const [filteredCashInOut, setFilteredCashInOut] = useState(1); // 1 Todos - 2 Cash-in - 3 Cash-out
+    
     useEffect(() => {
         const loadTransactions = async () => {
             try {
@@ -31,9 +33,9 @@ const Home = () => {
 
     useEffect(() => {
         if (listTransactions !== null) {
-            setFilteredList(filterListByMonth(listTransactions.transactions, currentMonth));
+            setFilteredList(filterListByMonth(listTransactions.transactions, currentMonth, filteredCashInOut, listTransactions.account.id));
         };
-    }, [listTransactions, currentMonth])
+    }, [listTransactions, currentMonth, filteredCashInOut])
 
     function handleMonthChange(newMonth) {
         setCurrentMonth(newMonth);
@@ -71,6 +73,9 @@ const Home = () => {
                     balance={listTransactions !== null ? listTransactions.account.balance : 0}
                     totalCashIn={totalCashIn}
                     totalCashOut={totalCashOut}
+                />
+                <SectionArea 
+                    setFilteredCashInOut={setFilteredCashInOut}
                 />
                 {listTransactions !== null ?
                     <TableArea
