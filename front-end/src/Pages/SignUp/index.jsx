@@ -60,7 +60,7 @@ const SignUp = () => {
                 }, 2400);
             }
             if (error.response.status === 422) {
-                setAlert('Senhas Divergentes!');
+                setAlert('Senhas Diferentes!');
             }
             setLoad(false);
         }
