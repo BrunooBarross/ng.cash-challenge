@@ -31,6 +31,12 @@ const Value = styled.td`
     color: ${props => props.color === "true" ? "green": "red"};
 `
 
+const DivCenter = styled.td`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
 const CashInfo = styled.div`
     display: flex;
     align-items: center;
@@ -51,5 +57,6 @@ export {
     TableHeadColumn,
     Td,
     CashInfo,
-    Value
+    Value,
+    DivCenter
 };

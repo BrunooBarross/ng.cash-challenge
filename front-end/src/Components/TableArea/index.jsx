@@ -5,7 +5,8 @@ import {
     TableHeadColumn,
     Td,
     CashInfo,
-    Value
+    Value,
+    DivCenter
 } from "./styled";
 
 const TableArea = ({ listTransactions, account }) => {
@@ -25,8 +26,8 @@ const TableArea = ({ listTransactions, account }) => {
                         <tr key={index}>
                             <Td>{dayjs(item.createdAt).format("DD-MM-YY")}</Td>
                             {item.debitedAccountId === account.id ?
-                                <Td><CashInfo color={"false"}>cash-out</CashInfo></Td> :
-                                <Td><CashInfo color={"true"}>cash-in</CashInfo></Td>
+                                <DivCenter><CashInfo color={"false"}>cash-out</CashInfo></DivCenter> :
+                                <DivCenter><CashInfo color={"true"}>cash-in</CashInfo></DivCenter>
                             }
                             {item.debitedAccountId === account.id ?
                                 <Td>Você transferiu para {item.credited.users.userName}</Td> :
