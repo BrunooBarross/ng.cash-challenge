@@ -18,9 +18,9 @@ const Header = () => {
         <HeaderContainer>
             <HeaderText>
                 Sistema Financeiro
-                <Icon>
+                <Icon onClick={() => logout()}>
                     <ion-icon name="exit-outline"></ion-icon>
-                    <h4 onClick={() => logout()}>Sair</h4>
+                    <h4>Sair</h4>
                 </Icon>
             </HeaderText>
             
