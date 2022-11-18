@@ -76,9 +76,11 @@ const SignUp = () => {
                     onChange={e => setRegister({ ...register, userName: e.target.value })}
                     disabled={load ? true : false} required />
                 <input type="password" minLength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z$*&@#]{8,}$" name="password" placeholder='password'
+                    title='A senha deve conter 8 caracteres uma letra maiúscula uma minúscula e um número'
                     onChange={e => setRegister({ ...register, password: e.target.value })}
                     disabled={load ? true : false} required />
                 <input type="password" minLength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z$*&@#]{8,}$" name="confimrPassword" placeholder='confirm password'
+                    title='A senha deve conter 8 caracteres uma letra maiúscula uma minúscula e um número'
                     onChange={e => setRegister({ ...register, confirmPassword: e.target.value })}
                     disabled={load ? true : false} required />
                 <Button load={load} disabled={load ? true : false} type="submit">{load ? <ThreeDots color="#fff" height={13} /> : "Sign Up"}</Button>

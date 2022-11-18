@@ -60,7 +60,9 @@ const SignIn = () => {
                     onChange={e => setloginData({ ...loginData, userName: e.target.value })}
                     disabled={load ? true : false} required />
                 <input type="password" minLength="8" name="password" placeholder='password'
+                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z$*&@#]{8,}$"
                     onChange={e => setloginData({ ...loginData, password: e.target.value })}
+                    title='A senha deve conter 8 caracteres uma letra maiúscula uma minúscula e um número'
                     disabled={load ? true : false} required />
                 <Button load={load} disabled={load ? true : false} type="submit">{load ? <ThreeDots color="#fff" height={13} /> : "Log In"}</Button>
                 <Div>
