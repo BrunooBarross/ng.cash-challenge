@@ -39,6 +39,10 @@ const SignIn = () => {
         } catch (error) {
             setAlertColor(false);
             setImageSrc("../assets/images/error.png")
+            if (error.response.status === 404) {
+                setAlert('Usuário ou senha incorretos');
+                setIsOpen(true);
+            }
             if (error.response.status === 401) {
                 setAlert('Usuário ou senha incorretos');
                 setIsOpen(true);

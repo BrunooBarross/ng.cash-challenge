@@ -32,7 +32,7 @@ $ docker-compose up --build
 ```bash
 
 $ git clone https://github.com/BrunooBarross/ng.cash-challenge.git
-$ cd ngcash-project/back-end/
+$ cd ng.cash-challenge/back-end/
 
 ```
 
