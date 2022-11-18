@@ -28,7 +28,7 @@ const DivModal = styled.div`
         margin-bottom: 5px;
         border: solid #d0d0d0 1px;
         font-size: 16px;
-        color: #868585;
+        color: #000;
         outline: none;
     }
 

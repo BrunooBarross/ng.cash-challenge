@@ -19,6 +19,28 @@ services:
       - db        #Só sobe de o postgres estiver funcionando
     env_file:
       - ./back-end/.env
+  
+  react_ngcash_app:
+    container_name: react_ngcash_app
+    build: ./front-end  #onde fica o dockerfile
+    depends_on:
+      - db
+      - back_end_app
+    volumes:
+      - build_react:/var/www/html
+    env_file:
+      - ./front-end/.env
+
+  nginx_ngcash_app:
+    container_name: nginx_ngcash_app
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - build_react:/var/www/html
+    depends_on:
+      - react_ngcash_app
       
 volumes:
   pg:
+  build_react: 

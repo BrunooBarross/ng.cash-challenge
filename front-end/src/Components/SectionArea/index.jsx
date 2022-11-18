@@ -28,9 +28,9 @@ const SectionArea = ({ setFilteredCashInOut, token, balance, loadPage, setLoadPa
                     <option value={3}>Cash-out</option>
                 </Select>
             </DivSelect>
-            <ButtonTransaction>
-                <span onClick={() => setModalIsOpen(!modalIsOpen)}>Transferir</span>
-            </ButtonTransaction>
+            <ButtonTransaction onClick={() => setModalIsOpen(!modalIsOpen)}>
+                <span>Transferir</span>
+            </ButtonTransaction> 
         </Container>
     )
 }
