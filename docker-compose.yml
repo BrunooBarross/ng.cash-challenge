@@ -1,0 +1,24 @@
+services: 
+  db:
+    image: postgres
+    container_name: db
+    restart: always  #container reinicia se morrer
+    ports:
+      - 5433:5432
+    env_file:
+      - ./back-end/.env
+    volumes:
+      - pg:/var/lib/postgresql/data #tudo que estiver em data salvar em pg "tipo um pen driver"
+  
+  back_end_app:
+    container_name: back_end_app
+    build: ./back-end  #busca o DockerFile
+    ports:
+      - 4000:4000
+    depends_on:
+      - db        #Só sobe de o postgres estiver funcionando
+    env_file:
+      - ./back-end/.env
+      
+volumes:
+  pg:
